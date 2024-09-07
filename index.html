@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,39 +13,28 @@
   <script defer src="./assets/js/logic.js" type="text/javascript"></script>
   <script defer src="./assets/js/form.js" type="text/javascript"></script>
 </head>
-<body>
-  <!-- TODO: Create landing page elements -->
-  <!-- will contain site title. Back button and dark/light mode button-->
-  <header>
-    <div>
-      <h1>My first blog</h1>
-    </div>
 
-    <!--for header buttons-->
-    <div>
-      <!--This button changes the page to light or dark mode depending on what is selected-->
-      <input id='back' type="button" value="Go to Blogs"/>
-      <input id='toggle' type="button" value="☀️"/>
-    </div>
-  </header>
+<header>
+  <button id="toggle">🌗</button>
+</header>
 
-  <main>
-    <aside>
-      <form id="myForm">
-       <section>
-         <h2>Blog Submission</h2>
-         <label for="username">Username</label>
-          <input id="username" type="text" name="username" placeholder="Username here"required/>
-          <label for="title">Title</label>
-          <input id="title" type="text" name="title" placeholder="Title of post here" required/>
-          <label for="content">Content</label>
-          <input id="bodyContent" type="text" name="content" placeholder="Put information here!" required/>
-          <textarea name="content" id="content" rows="5" required></textarea>
-          <p id="error" style="color: red;"></p>
-          <input id="submit" type="submit" value="Submit"/>
-        </section>
-      </form>
-    </aside>
-  </main>
+<main>
+  <aside>
+    <h2>My First Blog</h2>
+  </aside>
+
+  <section>
+    <form>
+      <h2>What's on your mind?</h2>
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" autocomplete="username" required/>
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" required/>
+      <label for="content">Content</label>
+      <textarea id="content" name="content" required></textarea>
+      <input type="submit" value="Submit" />
+      <div id="error"></div>
+    </form>
+  </section>
+</main>
 </body>
-</html>
