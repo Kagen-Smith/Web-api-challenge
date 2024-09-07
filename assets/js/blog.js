@@ -1,10 +1,65 @@
-// TODO: Create a variable that selects the main element
+import { readLocalStorage } from "./logic.js";
+
+// TODO: Create a variable that selects the main element, and a variable that selects the back button element
+const mainElement = document.querySelector("main");
+const backButton = document.getElementById("back");
+const blogs = readLocalStorage();
 
 // TODO: Create a function that builds an element and appends it to the DOM
+function buildElement(tag, text, parent) {
+  const element = document.createElement(tag);
+  element.textContent = text;
+  parent.appendChild(element);
+  return element;
+}
 
 // TODO: Create a function that handles the case where there are no blog posts to display
+function noBlogs() {
+  if (!blogs || blogs.length === 0) {
+    buildElement("h2", "No Blogs Found.", mainElement);
+  }
+}
 
-// TODO: Create a function that reads from local storage and returns the data
+// TODO: Create a function called `renderBlogList` that renders the list of blog posts if they exist. If not, call the no posts function.
+function renderBlogList() {
+  const blogs = readLocalStorage();
 
-// TODO: Call the function to render the list of blog posts
+  if (blogs.length === 0) {
+    noBlogs();
+  } else {
+    mainElement.innerHTML = "";
+    blogs.forEach((blog) => {
+      const article = document.createElement("article");
+      const h2 = document.createElement("h2");
+      const blockquote = document.createElement("blockquote");
+      const p = document.createElement("p");
 
+      h2.textContent = blog.title;
+      blockquote.textContent = blog.content;
+      p.textContent = `Posted by: ${blog.username}`;
+
+      article.appendChild(h2);
+      article.appendChild(blockquote);
+      article.appendChild(p);
+
+      mainElement.appendChild(article);
+    });
+  }
+}
+
+// TODO: Call the `renderBlogList` function
+renderBlogList();
+
+// TODO: Redirect to the home page using the `redirectPage` function found in logic.js when the back button is clicked
+backButton.addEventListener("click", function (event) {
+  event.preventDefault();
+  redirectPage("index.html");
+}
+);
+
+let redirectURL = "";
+
+const redirectPage = function (url) {
+  redirectURL = url;
+  location.assign(url);
+};
