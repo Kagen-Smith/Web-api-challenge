@@ -15,10 +15,6 @@ function handleFormSubmit(event) {
     localStorage.setItem("blogs", JSON.stringify(blogs));
   }
 
-  function redirectPage(page) {
-    // Code to redirect to the specified page
-    location.assign(page);
-  }
 
   if (username && title && content) {
     const blog = {
@@ -26,6 +22,7 @@ function handleFormSubmit(event) {
       title,
       content,
     };
+    
 
     storeLocalStorage(blog);
 

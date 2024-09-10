@@ -1,4 +1,3 @@
-
 // TODO: Create a variable that selects the main element, and a variable that selects the back button element
 const mainElement = document.querySelector("main");
 const backButton = document.getElementById("back");
@@ -49,16 +48,13 @@ function renderBlogList() {
     });
   }
 }
-function redirectPage(page) {
-  location.assign(page);
-}
+
 
 // TODO: Call the `renderBlogList` function
 renderBlogList();
 
 // TODO: Redirect to the home page using the `redirectPage` function found in logic.js when the back button is clicked
-backButton.addEventListener("click", function (event) {
-  event.preventDefault();
+backButton.addEventListener("click", function () {
   redirectPage("index.html");
 }
 );

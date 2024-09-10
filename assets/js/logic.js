@@ -22,12 +22,10 @@ function readMode() {
 }
 
 function writeMode() {
- page.className = "page" + mode;
-  document.documentElement.style.setProperty(
-    "--circle-color",
-    mode === "dark" ? "#000" : "#ffb100"
-  );
-}
+    page.className =  mode; 
+    toggle.textContent = mode === "light" ? "🌙" : "☀️"
+
+};
 
 
 // TODO: Create a function called `readLocalStorage` that reads from local storage and returns the data. If no data exists, return an empty array.
@@ -37,14 +35,15 @@ function readLocalStorage() {
 
 // TODO: Create a function called `storeLocalStorage` that takes a given object and saves the new data to the existing blog data in local storage.
 function storeLocalStorage(blog) {
-  const blogs = readLocalStorage();
+  let blogs = readLocalStorage();
   blogs.push(blog);
   localStorage.setItem("blogs", JSON.stringify(blogs));
 }
 
 // ! Use the following function whenever you need to redirect to a different page
+let redirectURL = 'blog.html';
 
-const redirectURL = function (url) {
+const redirectPage = function (url) {
   redirectURL = url;
   location.assign(url);
 };
