@@ -1,10 +1,12 @@
-import { readLocalStorage } from "./logic.js";
 
 // TODO: Create a variable that selects the main element, and a variable that selects the back button element
 const mainElement = document.querySelector("main");
 const backButton = document.getElementById("back");
-const blogs = readLocalStorage();
+function readLocalStorage () {
 
+  return JSON.parse(localStorage.getItem("blogs") || "[]");
+  
+};
 // TODO: Create a function that builds an element and appends it to the DOM
 function buildElement(tag, text, parent) {
   const element = document.createElement(tag);
@@ -15,6 +17,7 @@ function buildElement(tag, text, parent) {
 
 // TODO: Create a function that handles the case where there are no blog posts to display
 function noBlogs() {
+  const blogs = readLocalStorage();
   if (!blogs || blogs.length === 0) {
     buildElement("h2", "No Blogs Found.", mainElement);
   }
@@ -46,6 +49,9 @@ function renderBlogList() {
     });
   }
 }
+function redirectPage(page) {
+  location.assign(page);
+}
 
 // TODO: Call the `renderBlogList` function
 renderBlogList();
@@ -57,9 +63,3 @@ backButton.addEventListener("click", function (event) {
 }
 );
 
-let redirectURL = "";
-
-const redirectPage = function (url) {
-  redirectURL = url;
-  location.assign(url);
-};

@@ -22,12 +22,13 @@ function readMode() {
 }
 
 function writeMode() {
-  page.className = "page " + mode;
+ page.className = "page" + mode;
   document.documentElement.style.setProperty(
     "--circle-color",
     mode === "dark" ? "#000" : "#ffb100"
   );
 }
+
 
 // TODO: Create a function called `readLocalStorage` that reads from local storage and returns the data. If no data exists, return an empty array.
 function readLocalStorage() {

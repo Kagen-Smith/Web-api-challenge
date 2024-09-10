@@ -9,6 +9,17 @@ function handleFormSubmit(event) {
   const title = document.querySelector("#title").value.trim();
   const content = document.querySelector("#content").value.trim();
 
+  function storeLocalStorage(blog) {
+    const blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
+    blogs.push(blog);
+    localStorage.setItem("blogs", JSON.stringify(blogs));
+  }
+
+  function redirectPage(page) {
+    // Code to redirect to the specified page
+    location.assign(page);
+  }
+
   if (username && title && content) {
     const blog = {
       username,
@@ -28,8 +39,3 @@ function handleFormSubmit(event) {
 
 // TODO: Add an event listener to the form on submit. Call the function to handle the form submission.
 form.addEventListener("submit", handleFormSubmit);
-
-function init() {
-  readStorage();
-  if 
-}
